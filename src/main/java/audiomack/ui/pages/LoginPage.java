@@ -26,22 +26,22 @@ import audiomack.ui.BasePage;
 public class LoginPage extends BasePage {
 
     @FindBy(id = "react-view")
-    WebElement audiomackForm;
+    private WebElement audiomackForm;
 
     @FindBy(css = "div[class='main-header__right u-right'] a[data-modal='login']")
-    WebElement loginBtn;
+    private WebElement loginBtn;
 
     @FindBy(name = "email")
-    WebElement emailTxtBox;
+    private WebElement emailTxtBox;
 
     @FindBy(css = "button[class='button auth__button auth__button--submit u-text-center u-fs-14 u-fw-700']")
-    WebElement continueBtn;
+    private WebElement continueBtn;
 
     @FindBy(id = "password")
-    WebElement passwordTxtBox;
+    private WebElement passwordTxtBox;
 
     @FindBy(css = ".button--padded")
-    WebElement signInBtn;
+    private WebElement signInBtn;
 
     /**
      * Waits until page object is loaded.
