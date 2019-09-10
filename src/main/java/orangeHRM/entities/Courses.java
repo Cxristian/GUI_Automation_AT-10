@@ -38,7 +38,7 @@ public class Courses {
      *
      * @param title for the account.
      */
-    public void setTitle(String title) {
+    public void setTitle(final String title) {
         this.title = title;
     }
 
@@ -56,7 +56,7 @@ public class Courses {
      *
      * @param coordinator for the account.
      */
-    public void setCoordinator(String coordinator) {
+    public void setCoordinator(final String coordinator) {
         this.coordinator = coordinator;
     }
 
@@ -74,7 +74,7 @@ public class Courses {
      *
      * @param subunit for the account.
      */
-    public void setSubunit(String subunit) {
+    public void setSubunit(final String subunit) {
         this.subunit = subunit;
     }
 }

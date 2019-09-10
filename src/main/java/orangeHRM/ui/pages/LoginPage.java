@@ -69,7 +69,7 @@ public class LoginPage extends BasePage {
      *
      * @param userName for the log in.
      */
-    public void setUserName(String userName) {
+    private void setUserName(final String userName) {
         userNameTxtBox.sendKeys(userName);
     }
 
@@ -78,7 +78,7 @@ public class LoginPage extends BasePage {
      *
      * @param password for the log in.
      */
-    public void setPassword(String password) {
+    private void setPassword(final String password) {
         passwordTxtBox.sendKeys(password);
     }
 }
