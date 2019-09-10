@@ -1,5 +1,5 @@
 /*
- * @(#) LoginSteps.java Copyright (c) 2019 Jala Foundation .
+ * @(#) CourseStep.java Copyright (c) 2019 Jala Foundation .
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -14,25 +14,21 @@ package steps;
 
 import cucumber.api.java.en.When;
 import orangeHRM.PageTransporter;
-import orangeHRM.ui.pages.LoginPage;
+import orangeHRM.ui.pages.CoursePage;
 
 /**
- * LoginSteps class.
+ * steps.CourseStep class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
  */
-public class LoginSteps {
+public class CourseStep {
 
     PageTransporter pageTransporter = PageTransporter.getInstance();
-    private LoginPage loginPage;
+    private CoursePage coursePage;
 
-    /**
-     * Sign in step.
-     */
-    @When("^I am logged in orangeHRM site with (username) and (password) valid$")
-    public void logInOrangeHRMSiteWithUsernameAndPasswordValid(final String userName, final String password) {
-        loginPage = pageTransporter.navigateToLoginPage();
-        loginPage.login(userName, password);
+    @When("^I go to the Courses page$")
+    public void goToTheCoursesPage() {
+        coursePage = pageTransporter.navigateToCoursePage();
     }
 }

@@ -21,7 +21,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 /**
- * DashboardStep class
+ * DashboardStep class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
@@ -37,11 +37,12 @@ public class DashboardStep {
         dashboardPage = pageTransporter.navigateToDashboardPage();
         webDriver = WebDriverManager.getInstance().getWebDriver();
         String title = webDriver.getTitle();
-        Assert.assertEquals(title, "qweret");
+        Assert.assertEquals(title,"OrangeHRM");
     }
 
     @And("^I see the name (.*) on the dashboard page$")
     public void checkTheNameDashboardOnTheDashboardPage(final String namePage) {
-        Assert.assertEquals(dashboardPage.getTitlePage(), namePage);
+        Assert.assertEquals(dashboardPage.getTitlePage(),namePage);
     }
+
 }

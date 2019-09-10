@@ -19,12 +19,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * FactoryBrowser class
+ * FactoryBrowser class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
  */
-public class FactoryBrowser {
+public final class FactoryBrowser {
 
     private static WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
     private static final String FIREFOX = "firefox";

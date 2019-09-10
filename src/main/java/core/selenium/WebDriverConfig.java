@@ -12,7 +12,6 @@
 
 package core.selenium;
 
-
 import core.utils.ReaderPropertiesFile;
 
 /**

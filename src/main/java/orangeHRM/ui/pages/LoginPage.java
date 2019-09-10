@@ -67,7 +67,7 @@ public class LoginPage extends BasePage {
     /**
      * Sets the user name in the textBox of the login form.
      *
-     * @param userName for the log in.
+     * @param userName for the LOG in.
      */
     private void setUserName(final String userName) {
         userNameTxtBox.sendKeys(userName);
@@ -76,7 +76,7 @@ public class LoginPage extends BasePage {
     /**
      * Sets the password in the textBox of the login form.
      *
-     * @param password for the log in.
+     * @param password for the LOG in.
      */
     private void setPassword(final String password) {
         passwordTxtBox.sendKeys(password);

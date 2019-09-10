@@ -74,7 +74,7 @@ public class ReaderPropertiesFile {
      * @param url of properties.
      * @return the properties.
      */
-    private Properties loadFile(String url) {
+    private Properties loadFile(final String url) {
         Properties prop = new Properties();
         try {
             InputStream input = new FileInputStream(url);

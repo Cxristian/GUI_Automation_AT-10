@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 /**
- * WebDriverManager class
+ * WebDriverManager class.
  *
  * @author Cristian Lujan
  * @version 0.0.1

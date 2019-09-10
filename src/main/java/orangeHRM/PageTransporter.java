@@ -14,6 +14,7 @@ package orangeHRM;
 
 import core.selenium.WebDriverManager;
 import core.utils.ReaderPropertiesFile;
+import orangeHRM.ui.pages.CoursePage;
 import orangeHRM.ui.pages.DashboardPage;
 import org.openqa.selenium.WebDriver;
 import orangeHRM.ui.pages.LoginPage;
@@ -22,7 +23,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * PageTransporter class
+ * PageTransporter class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
@@ -30,7 +31,7 @@ import java.net.URL;
 public class PageTransporter {
 
     private static PageTransporter instance;
-    WebDriver webDriver;
+    private WebDriver webDriver;
 
     /**
      * Constructor of page transporter.
@@ -89,5 +90,16 @@ public class PageTransporter {
     public DashboardPage navigateToDashboardPage() {
         goToURL(ReaderPropertiesFile.getInstance().getProperties().get("login").concat("client/#/dashboard"));
         return new DashboardPage();
+    }
+
+    /**
+     * Navigates to the course page.
+     *
+     * @return a new course page.
+     */
+    public CoursePage navigateToCoursePage() {
+        goToURL(ReaderPropertiesFile.getInstance().getProperties().get("login").
+                concat("client/#/noncore/training/viewCourseList"));
+        return new CoursePage();
     }
 }
