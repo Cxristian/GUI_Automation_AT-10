@@ -31,4 +31,3 @@ public class Chrome implements IDriver {
         return new ChromeDriver();
     }
 }
-

@@ -10,12 +10,12 @@
  * with Jala Foundation.
  */
 
-package audiomack.ui.pages;
+package orangeHRM.ui.pages;
 import core.utils.ReaderPropertiesFile;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import audiomack.ui.BasePage;
+import orangeHRM.ui.BasePage;
 
 /**
  * LoginPage class
@@ -25,30 +25,24 @@ import audiomack.ui.BasePage;
  */
 public class LoginPage extends BasePage {
 
-    @FindBy(id = "react-view")
-    private WebElement audiomackForm;
+    @FindBy(id = "wrapper")
+    private WebElement orangeHRMForm;
 
-    @FindBy(css = "div[class='main-header__right u-right'] a[data-modal='login']")
-    private WebElement loginBtn;
+    @FindBy(id = "txtUsername")
+    private WebElement userNameTxtBox;
 
-    @FindBy(name = "email")
-    private WebElement emailTxtBox;
-
-    @FindBy(css = "button[class='button auth__button auth__button--submit u-text-center u-fs-14 u-fw-700']")
-    private WebElement continueBtn;
-
-    @FindBy(id = "password")
+    @FindBy(id = "txtPassword")
     private WebElement passwordTxtBox;
 
-    @FindBy(css = ".button--padded")
-    private WebElement signInBtn;
+    @FindBy(id = "btnLogin")
+    private WebElement logInBtn;
 
     /**
      * Waits until page object is loaded.
      */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(audiomackForm));
+        wait.until(ExpectedConditions.visibilityOf(orangeHRMForm));
     }
 
     /**
@@ -59,30 +53,15 @@ public class LoginPage extends BasePage {
      */
     public void login(String userName, String password) {
         setUserName(ReaderPropertiesFile.getInstance().getProperties().get(userName));
-        clickContinueBtn();
         setPassword(ReaderPropertiesFile.getInstance().getProperties().get(password));
-        clickSignInBtn();
+        clickLogin();
     }
 
     /**
      * Clicks on login button.
      */
     public void clickLogin() {
-        loginBtn.click();
-    }
-
-    /**
-     * Clicks on continue button.
-     */
-    public void clickContinueBtn() {
-        continueBtn.click();
-    }
-
-    /**
-     * Clicks on SignIn button.
-     */
-    public void clickSignInBtn() {
-        signInBtn.click();
+        logInBtn.click();
     }
 
     /**
@@ -91,7 +70,7 @@ public class LoginPage extends BasePage {
      * @param userName for the log in.
      */
     public void setUserName(String userName) {
-        emailTxtBox.sendKeys(userName);
+        userNameTxtBox.sendKeys(userName);
     }
 
     /**

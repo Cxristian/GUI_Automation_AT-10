@@ -10,12 +10,13 @@
  * with Jala Foundation.
  */
 
-package audiomack;
+package orangeHRM;
 
 import core.selenium.WebDriverManager;
 import core.utils.ReaderPropertiesFile;
+import orangeHRM.ui.pages.DashboardPage;
 import org.openqa.selenium.WebDriver;
-import audiomack.ui.pages.LoginPage;
+import orangeHRM.ui.pages.LoginPage;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -78,5 +79,15 @@ public class PageTransporter {
     public LoginPage navigateToLoginPage() {
         goToURL(ReaderPropertiesFile.getInstance().getProperties().get("login"));
         return new LoginPage();
+    }
+
+    /**
+     * Navigates to the Dashboard page.
+     *
+     * @return a new dashboard page.
+     */
+    public DashboardPage navigateToDashboardPage() {
+        goToURL(ReaderPropertiesFile.getInstance().getProperties().get("login").concat("client/#/dashboard"));
+        return new DashboardPage();
     }
 }

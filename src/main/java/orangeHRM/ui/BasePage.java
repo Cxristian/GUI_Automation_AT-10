@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package audiomack.ui;
+package orangeHRM.ui;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.WebDriver;
