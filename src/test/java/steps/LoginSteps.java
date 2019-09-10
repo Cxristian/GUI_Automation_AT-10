@@ -12,9 +12,9 @@
 
 package steps;
 
-import cucumber.api.java.en.Given;
-import audiomack.PageTransporter;
-import audiomack.ui.pages.LoginPage;
+import cucumber.api.java.en.When;
+import orangeHRM.PageTransporter;
+import orangeHRM.ui.pages.LoginPage;
 
 /**
  * LoginSteps class
@@ -30,10 +30,9 @@ public class LoginSteps {
     /**
      * Sign in step.
      */
-    @Given("^I am logged in Audiomack site with (username) and (password) valid$")
-    public void LogInAudiomackSiteWithUsernameAndPasswordValid(final String userName, final String password) {
+    @When("^I am logged in orangeHRM site with (username) and (password) valid$")
+    public void logInOrangeHRMSiteWithUsernameAndPasswordValid(final String userName, final String password) {
         loginPage = pageTransporter.navigateToLoginPage();
-        loginPage.clickLogin();
         loginPage.login(userName, password);
     }
 }
