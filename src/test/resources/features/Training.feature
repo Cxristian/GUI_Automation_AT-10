@@ -12,8 +12,6 @@ Feature: Manage courses
         | Coordinator | 112       |
     Then a message that indicates the Course was created should be displayed
       And the Course title should be displayed in the course list in the Course page
-    # I need to see the application for this step
-    # You should have an step that verifies the information of the new Course
 
   Scenario: Create a new Course with all data
     When I go to the Courses page
@@ -32,10 +30,10 @@ Feature: Manage courses
     Then a message that indicates the Course was created should be displayed
       And the Course title should be displayed in the course list in the Course page
 
-#  Scenario: Delete a course that was created
-#    Given I have a Course with title "Course to delete"
-#    When I go to the Courses page
-#      And I open Courses List page
-#      And I delete the Course in the Course List page
-#      And I see a message to confirm
-#    Then the Course title should de removed from Courses List page
+  Scenario: Delete a course that was created
+    Given I have a Course with title "Course to delete"
+    When I go to the Courses page
+      And I open Courses List page
+      And I delete the Course in the Course List page
+      And I see a message to confirm
+    Then the Course title should de removed from Courses List page
