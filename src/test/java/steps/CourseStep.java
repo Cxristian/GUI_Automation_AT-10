@@ -33,31 +33,47 @@ import static org.junit.Assert.assertEquals;
  */
 public class CourseStep {
 
-    PageTransporter pageTransporter;
+    private PageTransporter pageTransporter;
     private CoursePage coursePage;
     private CourseForm courseForm;
-    Context context;
-    Courses courses;
+    private Context context;
+    private Courses courses;
 
-    public CourseStep(Context context) {
+    /**
+     * Constructor of course steps sending the context.
+     *
+     * @param context init the context.
+     */
+    public CourseStep(final Context context) {
         this.context = context;
         courses = context.getCourses();
 
     }
 
+    /**
+     * Open the course page.
+     */
     @When("^I go to the Courses page$")
     public void goToTheCoursesPage() {
         pageTransporter = PageTransporter.getInstance();
         coursePage = pageTransporter.navigateToCoursePage();
     }
 
+    /**
+     * Open the course form.
+     */
     @And("^I open Course form$")
     public void openCoursesForm() {
         courseForm = coursePage.clickAddCourseForm();
     }
 
+    /**
+     * Creates a new course sending the information.
+     *
+     * @param course contains the course values
+     */
     @And("^I create a new Course with the following information in Course form$")
-    public void createANewCourseWithTheFollowingInformationInCourseForm(Map<String, String> course) {
+    public void createANewCourseWithTheFollowingInformationInCourseForm(final Map<String, String> course) {
         courseForm.setTitle(course.get("Title"));
         courseForm.setCoordinator(course.get("Coordinator"));
         courseForm.clickSaveBtn();
@@ -65,6 +81,9 @@ public class CourseStep {
         courses.setCoordinator(course.get("Coordinator"));
     }
 
+    /**
+     * Verifies with a message of confirmation that the contact is saved.
+     */
     @Then("^a message that indicates the Course was created should be displayed$")
     public void displayMessageThatIndicatesTheCourseWasCreatedShouldBeDisplayed() {
         final String message = courseForm.getMessageSave();

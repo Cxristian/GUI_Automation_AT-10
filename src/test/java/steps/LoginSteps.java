@@ -16,7 +16,6 @@ import core.utils.Logs;
 import cucumber.api.java.en.When;
 import orangeHRM.PageTransporter;
 import orangeHRM.ui.pages.LoginPage;
-import sun.rmi.runtime.Log;
 
 /**
  * LoginSteps class.
@@ -26,7 +25,7 @@ import sun.rmi.runtime.Log;
  */
 public class LoginSteps {
 
-    PageTransporter pageTransporter;
+    private PageTransporter pageTransporter;
     private LoginPage loginPage;
 
     /**

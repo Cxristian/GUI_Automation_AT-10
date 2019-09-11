@@ -27,13 +27,14 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverManager {
     private static WebDriver webDriver;
     private WebDriverWait webDriverWait;
-    private WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
+    private WebDriverConfig webDriverConfig;
     private static WebDriverManager instance = null;
 
     /**
      * Constructor of page WebDriverManager.
      */
     protected WebDriverManager() {
+        webDriverConfig = WebDriverConfig.getInstance();
         initialize();
     }
 

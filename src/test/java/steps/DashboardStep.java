@@ -27,23 +27,30 @@ import org.testng.Assert;
  * @version 0.0.1
  */
 public class DashboardStep {
+    private PageTransporter pageTransporter;
+    private DashboardPage dashboardPage;
+    private WebDriver webDriver;
 
-    PageTransporter pageTransporter;
-    DashboardPage dashboardPage;
-    WebDriver webDriver;
-
+    /**
+     * verify exist title on dashboard.
+     */
     @Then("^I am on the Dashboard page$")
     public void verifyOnTheDashboardPage() {
         pageTransporter = PageTransporter.getInstance();
         dashboardPage = pageTransporter.navigateToDashboardPage();
         webDriver = WebDriverManager.getInstance().getWebDriver();
         String title = webDriver.getTitle();
-        Assert.assertEquals(title,"OrangeHRM");
+        Assert.assertEquals(title, "OrangeHRM");
     }
 
+    /**
+     * verify exist name on dashboard page.
+     *
+     * @param namePage of the type String
+     */
     @And("^I see the name (.*) on the dashboard page$")
     public void checkTheNameDashboardOnTheDashboardPage(final String namePage) {
-        Assert.assertEquals(dashboardPage.getTitlePage(),namePage);
+        Assert.assertEquals(dashboardPage.getTitlePage(), namePage);
     }
 
 }

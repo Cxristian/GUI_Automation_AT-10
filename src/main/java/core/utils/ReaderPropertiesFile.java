@@ -23,7 +23,6 @@ public class ReaderPropertiesFile {
 
     private static final String URL_DRIVER_PROPERTIES = "driver.properties";
     private static final String URL_GRADLE_PROPERTIES = "gradle.properties";
-
     private Map<String, String> properties;
 
     /**

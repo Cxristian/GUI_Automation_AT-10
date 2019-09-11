@@ -44,7 +44,7 @@ public class Hooks {
      * @param scenario of type scenario;
      */
     @After
-    public void embedScreenshot(Scenario scenario) {
+    public void embedScreenshot(final Scenario scenario) {
         if (scenario.isFailed()) {
             try {
                 byte[] screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
