@@ -31,8 +31,9 @@ public class CoursePage extends BasePage {
     @FindBy(css = "div [class='page-title ']")
     private WebElement namePage;
 
-    @FindBy(id = "list_item_add")
-    private WebElement addBtn;
+    @FindBy(css = "i[class='large material-icons']")
+    private WebElement addNewCourseBtn;
+
     /**
      * Waits until page object is loaded.
      */
@@ -57,7 +58,7 @@ public class CoursePage extends BasePage {
      * @return new course form.
      */
     public CourseForm clickAddCourseForm() {
-        addBtn.click();
+        addNewCourseBtn.click();
         return new CourseForm();
     }
 }

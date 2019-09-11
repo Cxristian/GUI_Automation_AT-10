@@ -62,7 +62,7 @@ public class CourseStep {
     /**
      * Open the course form.
      */
-    @And("^I open Course form$")
+    @When("^I open Course form$")
     public void openCoursesForm() {
         courseForm = coursePage.clickAddCourseForm();
     }
@@ -72,13 +72,14 @@ public class CourseStep {
      *
      * @param course contains the course values
      */
-    @And("^I create a new Course with the following information in Course form$")
+    @When("^I create a new Course with the following information in Course form$")
     public void createANewCourseWithTheFollowingInformationInCourseForm(final Map<String, String> course) {
         courseForm.setTitle(course.get("Title"));
         courseForm.setCoordinator(course.get("Coordinator"));
         courseForm.clickSaveBtn();
         courses.setTitle(course.get("Title"));
         courses.setCoordinator(course.get("Coordinator"));
+        courseForm = courseForm.createCourse(courses);
     }
 
     /**

@@ -13,6 +13,7 @@
 package orangeHRM.ui.pages;
 
 import core.utils.DriverMethods;
+import orangeHRM.entities.Courses;
 import orangeHRM.ui.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -101,5 +102,12 @@ public class CourseForm extends BasePage {
      */
     public String getMessageSave() {
         return confirmationMessage.getText();
+    }
+
+    public CourseForm createCourse(final Courses course) {
+        setTitle(course.getTitle());
+        setCoordinator(course.getCoordinator());
+        clickSaveBtn();
+        return new CourseForm();
     }
 }
