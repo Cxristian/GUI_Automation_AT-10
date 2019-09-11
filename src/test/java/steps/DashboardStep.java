@@ -28,12 +28,13 @@ import org.testng.Assert;
  */
 public class DashboardStep {
 
-    PageTransporter pageTransporter = PageTransporter.getInstance();
+    PageTransporter pageTransporter;
     DashboardPage dashboardPage;
     WebDriver webDriver;
 
     @Then("^I am on the Dashboard page$")
     public void verifyOnTheDashboardPage() {
+        pageTransporter = PageTransporter.getInstance();
         dashboardPage = pageTransporter.navigateToDashboardPage();
         webDriver = WebDriverManager.getInstance().getWebDriver();
         String title = webDriver.getTitle();

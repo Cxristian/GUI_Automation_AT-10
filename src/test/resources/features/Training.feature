@@ -3,11 +3,11 @@ Feature: Courses manage
 
   Scenario: Create a new Course with only required data
     When I go to the Courses page
-      And I open Courses form
+      And I open Course form
       And I create a new Course with the following information in Course form
         | Title       | Docker2.0 |
         | Coordinator | 112       |
-    Then I see a message that indicates the Course was created
+    Then a message that indicates the Course was created should be displayed
       And the Course title should be displayed in the course list in the Course page
 
   Scenario: Create a new Course with all data

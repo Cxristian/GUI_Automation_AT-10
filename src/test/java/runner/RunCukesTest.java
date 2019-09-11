@@ -32,11 +32,8 @@ import java.util.List;
  * @version 1.0
  */
 @CucumberOptions(
-        plugin = {"pretty",
-                "html:target/cucumber-pretty",
-                "json:target/cucumber.json",
-                "rerun:target/rerun.txt"},
-        glue = {"steps"},
+        plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json"},
+        glue = {"steps", "hooks"},
         features = {"src/test/resources/features/Login.feature"},
         monochrome = true)
 public class RunCukesTest extends AbstractTestNGCucumberTests {
@@ -61,7 +58,6 @@ public class RunCukesTest extends AbstractTestNGCucumberTests {
         configuration.addClassifications("Platform", "Windows");
         configuration.addClassifications("Browser", "Chrome");
         configuration.addClassifications("Branch", "release/1.0");
-
 
         ReportBuilder reportBuilder = new ReportBuilder(jsonFiles, configuration);
         Reportable result = reportBuilder.generateReports();

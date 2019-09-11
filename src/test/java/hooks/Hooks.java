@@ -22,7 +22,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 
 /**
- * Hooks class
+ * Hooks class.
  *
  * @author Cristian Lujan.
  * @version 0.0.1

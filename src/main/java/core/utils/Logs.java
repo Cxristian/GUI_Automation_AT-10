@@ -16,8 +16,6 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import java.io.File;
-
 /**
  * Logs class.
  *
@@ -27,6 +25,7 @@ import java.io.File;
 public final class Logs {
     private static Logs instance = null;
     protected static final  Logger LOG = Logger.getLogger(Logs.class);
+    private static final String LOG_4_J_PROPERTIES = "log.properties";
 
     /**
      * Is the private constructor of our Singleton class.
@@ -45,7 +44,7 @@ public final class Logs {
     public static Logs getInstance() {
         if (instance == null) {
             instance = new Logs();
-            PropertyConfigurator.configure(new File("").getAbsolutePath() + "\\LOG.properties");
+            PropertyConfigurator.configure(LOG_4_J_PROPERTIES);
             LOG.setLevel(Level.ALL);
         }
         return instance;

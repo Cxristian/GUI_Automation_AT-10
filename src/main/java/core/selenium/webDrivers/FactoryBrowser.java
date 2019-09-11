@@ -26,7 +26,7 @@ import java.util.Map;
  */
 public final class FactoryBrowser {
 
-    private static WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
+    private static WebDriverConfig webDriverConfig;
     private static final String FIREFOX = "firefox";
     private static final String CHROME = "chrome";
 
@@ -36,6 +36,7 @@ public final class FactoryBrowser {
      * @return webDriver for the browser.
      */
     public static WebDriver getWebDriver() {
+        webDriverConfig = WebDriverConfig.getInstance();
         Map<String, IDriver> strategyBrowser = new HashMap<>();
         strategyBrowser.put(FIREFOX, new Firefox());
         strategyBrowser.put(CHROME, new Chrome());
@@ -43,7 +44,7 @@ public final class FactoryBrowser {
     }
 
     /**
-     * Constructor.
+     * Constructor of the close.
      */
     private FactoryBrowser() {
     }

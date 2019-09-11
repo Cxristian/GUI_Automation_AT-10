@@ -12,9 +12,11 @@
 
 package steps;
 
+import core.utils.Logs;
 import cucumber.api.java.en.When;
 import orangeHRM.PageTransporter;
 import orangeHRM.ui.pages.LoginPage;
+import sun.rmi.runtime.Log;
 
 /**
  * LoginSteps class.
@@ -24,7 +26,7 @@ import orangeHRM.ui.pages.LoginPage;
  */
 public class LoginSteps {
 
-    PageTransporter pageTransporter = PageTransporter.getInstance();
+    PageTransporter pageTransporter;
     private LoginPage loginPage;
 
     /**
@@ -32,7 +34,9 @@ public class LoginSteps {
      */
     @When("^I am logged in orangeHRM site with (username) and (password) valid$")
     public void logInOrangeHRMSiteWithUsernameAndPasswordValid(final String userName, final String password) {
+        pageTransporter = PageTransporter.getInstance();
         loginPage = pageTransporter.navigateToLoginPage();
         loginPage.login(userName, password);
+        Logs.getInstance().getLog().info("login user");
     }
 }
