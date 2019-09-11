@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 /**
- * WebDriverManager class
+ * WebDriverManager class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
@@ -27,18 +27,19 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverManager {
     private static WebDriver webDriver;
     private WebDriverWait webDriverWait;
-    private WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
+    private WebDriverConfig webDriverConfig;
     private static WebDriverManager instance = null;
 
     /**
      * Constructor of page WebDriverManager.
      */
     protected WebDriverManager() {
+        webDriverConfig = WebDriverConfig.getInstance();
         initialize();
     }
 
     /**
-     * Gets Instance of a WebElement.
+     * Gets Instance of a Web Element.
      *
      * @return Instance of WebElement.
      */

@@ -19,14 +19,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * FactoryBrowser class
+ * FactoryBrowser class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
  */
-public class FactoryBrowser {
+public final class FactoryBrowser {
 
-    private static WebDriverConfig webDriverConfig = WebDriverConfig.getInstance();
+    private static WebDriverConfig webDriverConfig;
     private static final String FIREFOX = "firefox";
     private static final String CHROME = "chrome";
 
@@ -36,6 +36,7 @@ public class FactoryBrowser {
      * @return webDriver for the browser.
      */
     public static WebDriver getWebDriver() {
+        webDriverConfig = WebDriverConfig.getInstance();
         Map<String, IDriver> strategyBrowser = new HashMap<>();
         strategyBrowser.put(FIREFOX, new Firefox());
         strategyBrowser.put(CHROME, new Chrome());
@@ -43,7 +44,7 @@ public class FactoryBrowser {
     }
 
     /**
-     * Constructor.
+     * Constructor of the close.
      */
     private FactoryBrowser() {
     }

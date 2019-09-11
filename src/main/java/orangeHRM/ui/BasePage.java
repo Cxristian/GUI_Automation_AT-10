@@ -18,7 +18,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * BasePage class
+ * BasePage class.
  *
  * @author Cristian Lujan
  * @version 0.0.1

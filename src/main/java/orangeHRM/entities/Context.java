@@ -1,5 +1,5 @@
 /*
- * @(#) IDriver.java Copyright (c) 2019 Jala Foundation .
+ * @(#) Context.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -10,16 +10,31 @@
  * with Jala Foundation.
  */
 
-package core.selenium.webDrivers;
-
-import org.openqa.selenium.WebDriver;
+package orangeHRM.entities;
 
 /**
- * IDriver class.
+ * Context class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
  */
-public interface IDriver {
-    WebDriver initDriver();
+public class Context {
+
+    private Courses courses;
+
+    /**
+     * Context for creation of the constructor.
+     */
+    public Context() {
+        this.courses = new Courses();
+    }
+
+    /**
+     * Returns the Courses of context.
+     *
+     * @return courses.
+     */
+    public Courses getCourses() {
+        return courses;
+    }
 }

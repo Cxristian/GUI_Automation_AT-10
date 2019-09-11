@@ -17,7 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
- * Firefox class
+ * Firefox class.
  *
  * @author Cristian Lujan
  * @version 0.0.1

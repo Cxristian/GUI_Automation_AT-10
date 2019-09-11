@@ -18,7 +18,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * DashboardPage class
+ * DashboardPage class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
@@ -59,5 +59,4 @@ public class DashboardPage extends BasePage {
     public String getTitlePage() {
         return titlePage.getText();
     }
-
 }

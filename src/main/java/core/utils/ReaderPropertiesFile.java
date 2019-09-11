@@ -23,13 +23,13 @@ public class ReaderPropertiesFile {
 
     private static final String URL_DRIVER_PROPERTIES = "driver.properties";
     private static final String URL_GRADLE_PROPERTIES = "gradle.properties";
-
-    private Map<String, String> properties = new HashMap<>();
+    private Map<String, String> properties;
 
     /**
      * Initializes a new reader with the properties for driver.
      */
     protected ReaderPropertiesFile() {
+        properties = new HashMap<>();
         addPropertiesGradle();
         addPropertiesDriver();
     }
@@ -74,7 +74,7 @@ public class ReaderPropertiesFile {
      * @param url of properties.
      * @return the properties.
      */
-    private Properties loadFile(String url) {
+    private Properties loadFile(final String url) {
         Properties prop = new Properties();
         try {
             InputStream input = new FileInputStream(url);

@@ -25,12 +25,9 @@ dependencies {
     testCompile 'io.cucumber:cucumber-junit:2.4.0'
     compile group: 'net.masterthought', name: 'cucumber-reporting', version: '4.6.0'
 }
-
     // Task to define arguments and configurations to properties file
     tasks.withType(Test) {
 
     // enable TestNG support (default is JUnit)
     useTestNG()
-        
-
 }

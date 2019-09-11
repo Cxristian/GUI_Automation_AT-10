@@ -18,7 +18,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * CoursePage class
+ * CoursePage class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
@@ -30,6 +30,9 @@ public class CoursePage extends BasePage {
 
     @FindBy(css = "div [class='page-title ']")
     private WebElement namePage;
+
+    @FindBy(css = "i[class='large material-icons']")
+    private WebElement addNewCourseBtn;
 
     /**
      * Waits until page object is loaded.
@@ -46,5 +49,16 @@ public class CoursePage extends BasePage {
      */
     public String getNamePage() {
         return namePage.getText();
+    }
+
+
+    /**
+     * Gets add Course.
+     *
+     * @return new course form.
+     */
+    public CourseForm clickAddCourseForm() {
+        addNewCourseBtn.click();
+        return new CourseForm();
     }
 }
