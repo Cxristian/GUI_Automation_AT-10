@@ -1,6 +1,8 @@
 
 Feature: Courses manage
 
+  Background:
+
   Scenario: Create a new Course with only required data
     When I go to the Courses page
       And I open Course form

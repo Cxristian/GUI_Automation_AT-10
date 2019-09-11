@@ -39,7 +39,7 @@ public class WebDriverManager {
     }
 
     /**
-     * Gets Instance of a WebElement.
+     * Gets Instance of a Web Element.
      *
      * @return Instance of WebElement.
      */
