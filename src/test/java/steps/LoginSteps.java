@@ -30,6 +30,9 @@ public class LoginSteps {
 
     /**
      * Sign in step.
+     *
+     * @param userName of type String
+     * @param password of type String
      */
     @When("^I am logged in orangeHRM site with (username) and (password) valid$")
     public void logInOrangeHRMSiteWithUsernameAndPasswordValid(final String userName, final String password) {
