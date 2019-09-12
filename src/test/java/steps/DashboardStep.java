@@ -20,6 +20,8 @@ import orangeHRM.ui.pages.DashboardPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import static orangeHRM.ui.Permalinks.DASHBOARD_PERMALINK;
+
 /**
  * DashboardStep class.
  *
@@ -37,7 +39,8 @@ public class DashboardStep {
     @Then("^I am on the Dashboard page$")
     public void verifyOnTheDashboardPage() {
         pageTransporter = PageTransporter.getInstance();
-        dashboardPage = pageTransporter.navigateToDashboardPage();
+        pageTransporter.navigatePage(DASHBOARD_PERMALINK);
+        dashboardPage = new DashboardPage();
         webDriver = WebDriverManager.getInstance().getWebDriver();
         String title = webDriver.getTitle();
         Assert.assertEquals(title, "OrangeHRM");

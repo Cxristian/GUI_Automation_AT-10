@@ -17,6 +17,8 @@ import cucumber.api.java.en.When;
 import orangeHRM.PageTransporter;
 import orangeHRM.ui.pages.LoginPage;
 
+import static orangeHRM.ui.Permalinks.LOGIN_PERMALINK;
+
 /**
  * LoginSteps class.
  *
@@ -34,11 +36,12 @@ public class LoginSteps {
      * @param userName of type String
      * @param password of type String
      */
-    @When("^I am logged in orangeHRM site with (username) and (password) valid$")
+    @When("^I log in orangeHRM site with (username) and (password) valid$")
     public void logInOrangeHRMSiteWithUsernameAndPasswordValid(final String userName, final String password) {
         pageTransporter = PageTransporter.getInstance();
-        loginPage = pageTransporter.navigateToLoginPage();
+        pageTransporter.navigatePage(LOGIN_PERMALINK);
+        loginPage = new LoginPage();
         loginPage.login(userName, password);
-        Logs.getInstance().getLog().info("login user");
+        Logs.getInstance().getLog().info("logged user successfully...");
     }
 }

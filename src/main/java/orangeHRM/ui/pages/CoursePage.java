@@ -61,4 +61,11 @@ public class CoursePage extends BasePage {
         addNewCourseBtn.click();
         return new CourseForm();
     }
+
+    /**
+     * Constructor of page.
+     */
+    public CoursePage() {
+        driver.switchTo().frame(0);
+    }
 }

@@ -26,7 +26,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Cristian Lujan
  * @version 0.0.1
  */
-public class CourseForm extends BasePage {
+public class CourseForm extends CourseFormAbstract {
 
     @FindBy(id = "content")
     private WebElement courseDetailForm;
@@ -64,9 +64,12 @@ public class CourseForm extends BasePage {
     @FindBy(id = "btnSaveCourse")
     private WebElement saveBtn;
 
-    @FindBy(css = "[class='toast-message']")
+    @FindBy(css = ".toast-message")
     private WebElement confirmationMessage;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(courseDetailForm));
@@ -91,6 +94,18 @@ public class CourseForm extends BasePage {
         coordinatorTxtBox.sendKeys(Keys.ENTER);
     }
 
+    /**
+     * Sets the subunit.
+     *
+     * @param subunit for the contact.
+     */
+    protected void setSubunit(final String subunit) {
+        DriverMethods.setTxt(subUnitTxtBox, subunit);
+    }
+
+    /**
+     * Clicks on save button.
+     */
     public void clickSaveBtn() {
         saveBtn.click();
     }
@@ -102,12 +117,5 @@ public class CourseForm extends BasePage {
      */
     public String getMessageSave() {
         return confirmationMessage.getText();
-    }
-
-    public CourseForm createCourse(final Courses course) {
-        setTitle(course.getTitle());
-        setCoordinator(course.getCoordinator());
-        clickSaveBtn();
-        return new CourseForm();
     }
 }

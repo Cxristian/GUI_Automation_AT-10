@@ -1,5 +1,5 @@
 /*
- * @(#) Courses.java Copyright (c) 2019 Jala Foundation .
+ * @(#) CourseFormAbstract.java Copyright (c) 2019 Jala Foundation .
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -10,20 +10,21 @@
  * with Jala Foundation.
  */
 
-package orangeHRM.entities;
+package orangeHRM.ui.pages;
 
 import core.IStrategySetter;
+import orangeHRM.ui.BasePage;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Courses class.
+ * CourseFormAbstract class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
  */
-public class Courses {
+public abstract class CourseFormAbstract extends BasePage {
 
     private String title;
     private String coordinator;
@@ -34,7 +35,7 @@ public class Courses {
      *
      * @param newCourse of type string
      */
-    public void processInformation(final Map<String, String> newCourse) {
+    public void setCourseInformation(final Map<String, String> newCourse) {
         final HashMap<String, IStrategySetter> strategyMap = composeStrategyMap(newCourse);
         newCourse.keySet().forEach(key -> {
             strategyMap.get(key).executeMethod();
@@ -56,56 +57,24 @@ public class Courses {
     }
 
     /**
-     * Gets the title of the Course.
+     * Sets the title sending a string.
      *
-     * @return the id as string.
+     * @param title for the contact.
      */
-    public String getTitle() {
-        return title;
-    }
+    protected abstract void setTitle(String title);
 
     /**
-     * Sets the title of Course.
+     * Sets the coordinator sending a string.
      *
-     * @param title for the account.
+     * @param coordinator for the contact.
      */
-    public void setTitle(final String title) {
-        this.title = title;
-    }
+    protected abstract void setCoordinator(String coordinator);
 
     /**
-     * Gets the coordinator of the Course.
+     * Sets the subunit sending a string.
      *
-     * @return the id as string.
+     * @param subunit for the contact.
      */
-    public String getCoordinator() {
-        return coordinator;
-    }
+    protected abstract void setSubunit(String subunit);
 
-    /**
-     * Sets the coordinator of Course.
-     *
-     * @param coordinator for the account.
-     */
-    public void setCoordinator(final String coordinator) {
-        this.coordinator = coordinator;
-    }
-
-    /**
-     * Gets the subunit of the Course.
-     *
-     * @return the subunit as string.
-     */
-    public String getSubunit() {
-        return subunit;
-    }
-
-    /**
-     * Sets the subunit of Course.
-     *
-     * @param subunit for the account.
-     */
-    public void setSubunit(final String subunit) {
-        this.subunit = subunit;
-    }
 }

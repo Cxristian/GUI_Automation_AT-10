@@ -23,6 +23,7 @@ import orangeHRM.ui.pages.CoursePage;
 
 import java.util.Map;
 
+import static orangeHRM.ui.Permalinks.COURSE_PERMALINK;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -56,7 +57,8 @@ public class CourseStep {
     @When("^I go to the Courses page$")
     public void goToTheCoursesPage() {
         pageTransporter = PageTransporter.getInstance();
-        coursePage = pageTransporter.navigateToCoursePage();
+        pageTransporter.navigatePage(COURSE_PERMALINK);
+        coursePage = new CoursePage();
     }
 
     /**
@@ -74,12 +76,9 @@ public class CourseStep {
      */
     @When("^I create a new Course with the following information in Course form$")
     public void createANewCourseWithTheFollowingInformationInCourseForm(final Map<String, String> course) {
-        courseForm.setTitle(course.get("Title"));
-        courseForm.setCoordinator(course.get("Coordinator"));
+        courseForm.setCourseInformation(course);
+        courses.processInformation(course);
         courseForm.clickSaveBtn();
-        courses.setTitle(course.get("Title"));
-        courses.setCoordinator(course.get("Coordinator"));
-        courseForm = courseForm.createCourse(courses);
     }
 
     /**

@@ -28,7 +28,6 @@ public final class DriverMethods {
      * @param text new value of webElement.
      */
     public static void setTxt(final WebElement webElement, final String text) {
-        webElement.click();
         webElement.clear();
         webElement.sendKeys(text);
     }
