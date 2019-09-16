@@ -16,11 +16,10 @@ import core.selenium.WebDriverManager;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import orangeHRM.PageTransporter;
+import orangeHRM.ui.Permalink;
 import orangeHRM.ui.pages.DashboardPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
-import static orangeHRM.ui.Permalinks.DASHBOARD_PERMALINK;
 
 /**
  * DashboardStep class.
@@ -31,18 +30,19 @@ import static orangeHRM.ui.Permalinks.DASHBOARD_PERMALINK;
 public class DashboardStep {
     private PageTransporter pageTransporter;
     private DashboardPage dashboardPage;
-    private WebDriver webDriver;
+
 
     /**
      * verify exist title on dashboard.
+     *
+     * @param permalink of the type String
      */
-    @Then("^I am on the Dashboard page$")
-    public void verifyOnTheDashboardPage() {
+    @Then("^I am on the (.*)$")
+    public void verifyOnTheDashboardPage(final String permalink) {
         pageTransporter = PageTransporter.getInstance();
-        pageTransporter.navigatePage(DASHBOARD_PERMALINK);
+        pageTransporter.navigatePage(Permalink.getPermalink(permalink));
         dashboardPage = new DashboardPage();
-        webDriver = WebDriverManager.getInstance().getWebDriver();
-        String title = webDriver.getTitle();
+        String title = WebDriverManager.getInstance().getWebDriver().getTitle();
         Assert.assertEquals(title, "OrangeHRM");
     }
 

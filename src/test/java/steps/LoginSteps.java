@@ -13,11 +13,11 @@
 package steps;
 
 import core.utils.Logs;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import orangeHRM.PageTransporter;
+import orangeHRM.ui.Permalink;
 import orangeHRM.ui.pages.LoginPage;
-
-import static orangeHRM.ui.Permalinks.LOGIN_PERMALINK;
 
 /**
  * LoginSteps class.
@@ -31,15 +31,21 @@ public class LoginSteps {
     private LoginPage loginPage;
 
     /**
+     * Go to the link log in.
+     * @param permalink of type String.
+     */
+    @Given("^I go to the (.*)$")
+    public void goToThePage(final String permalink) {
+        pageTransporter = PageTransporter.getInstance();
+        pageTransporter.navigatePage(Permalink.getPermalink(permalink));
+    }
+    /**
      * Sign in step.
-     *
      * @param userName of type String
      * @param password of type String
      */
     @When("^I log in orangeHRM site with (username) and (password) valid$")
     public void logInOrangeHRMSiteWithUsernameAndPasswordValid(final String userName, final String password) {
-        pageTransporter = PageTransporter.getInstance();
-        pageTransporter.navigatePage(LOGIN_PERMALINK);
         loginPage = new LoginPage();
         loginPage.login(userName, password);
         Logs.getInstance().getLog().info("logged user successfully...");

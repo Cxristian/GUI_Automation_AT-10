@@ -18,6 +18,17 @@ import orangeHRM.ui.BasePage;
 import java.util.HashMap;
 import java.util.Map;
 
+import static orangeHRM.keys.CourseKeys.COMPANY;
+import static orangeHRM.keys.CourseKeys.COORDINATOR;
+import static orangeHRM.keys.CourseKeys.COST;
+import static orangeHRM.keys.CourseKeys.CURRENCY;
+import static orangeHRM.keys.CourseKeys.DESCRIPTION;
+import static orangeHRM.keys.CourseKeys.DURATION;
+import static orangeHRM.keys.CourseKeys.SUBUNIT;
+import static orangeHRM.keys.CourseKeys.SUB_VERSION;
+import static orangeHRM.keys.CourseKeys.TITLE;
+import static orangeHRM.keys.CourseKeys.VERSION;
+
 /**
  * CourseFormAbstract class.
  *
@@ -26,16 +37,12 @@ import java.util.Map;
  */
 public abstract class CourseFormAbstract extends BasePage {
 
-    private String title;
-    private String coordinator;
-    private String subunit;
-
     /**
      * Process information for composing the strategy map.
      *
      * @param newCourse of type string
      */
-    public void setCourseInformation(final Map<String, String> newCourse) {
+    public void createCourse(final Map<String, String> newCourse) {
         final HashMap<String, IStrategySetter> strategyMap = composeStrategyMap(newCourse);
         newCourse.keySet().forEach(key -> {
             strategyMap.get(key).executeMethod();
@@ -50,9 +57,16 @@ public abstract class CourseFormAbstract extends BasePage {
      */
     public HashMap<String, IStrategySetter> composeStrategyMap(final Map<String, String> newCourse) {
         final HashMap<String, IStrategySetter> strategyMap = new HashMap<>();
-        strategyMap.put(title, () -> setTitle(newCourse.get(title)));
-        strategyMap.put(coordinator, () -> setCoordinator(newCourse.get(coordinator)));
-        strategyMap.put(subunit, () -> setSubunit(newCourse.get(subunit)));
+        strategyMap.put(TITLE, () -> setTitle(newCourse.get(TITLE)));
+        strategyMap.put(COORDINATOR, () -> setCoordinator(newCourse.get(COORDINATOR)));
+        strategyMap.put(SUBUNIT, () -> setSubunit(newCourse.get(SUBUNIT)));
+        strategyMap.put(VERSION, () -> setSubunit(newCourse.get(VERSION)));
+        strategyMap.put(SUB_VERSION, () -> setSubunit(newCourse.get(SUB_VERSION)));
+        strategyMap.put(CURRENCY, () -> setSubunit(newCourse.get(CURRENCY)));
+        strategyMap.put(COST, () -> setSubunit(newCourse.get(COST)));
+        strategyMap.put(COMPANY, () -> setSubunit(newCourse.get(COMPANY)));
+        strategyMap.put(DURATION, () -> setSubunit(newCourse.get(DURATION)));
+        strategyMap.put(DESCRIPTION, () -> setSubunit(newCourse.get(DESCRIPTION)));
         return strategyMap;
     }
 
