@@ -1,5 +1,5 @@
 /*
- * @(#) IDriver.java Copyright (c) 2019 Jala Foundation .
+ * @(#) IStrategySetter.java Copyright (c) 2019 Jala Foundation .
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -10,17 +10,19 @@
  * with Jala Foundation.
  */
 
-package core.selenium.webDrivers;
-
-import org.openqa.selenium.WebDriver;
+package core;
 
 /**
- * IDriver class.
+ * IStrategySetter class.
  *
  * @author Cristian Lujan
  * @version 0.0.1
  */
 @FunctionalInterface
-public interface IDriver {
-    WebDriver initDriver();
+public interface IStrategySetter {
+
+    /**
+     * Executes method for a Page or an entity.
+     */
+    void executeMethod();
 }

@@ -12,18 +12,17 @@
 
 package steps;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import orangeHRM.PageTransporter;
 import orangeHRM.entities.Context;
 import orangeHRM.entities.Courses;
 import orangeHRM.ui.pages.CourseForm;
+import orangeHRM.ui.pages.CourseFormAbstract;
 import orangeHRM.ui.pages.CoursePage;
+import org.junit.Assert;
 
 import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * steps.CourseStep class.
@@ -36,6 +35,7 @@ public class CourseStep {
     private PageTransporter pageTransporter;
     private CoursePage coursePage;
     private CourseForm courseForm;
+    private CourseFormAbstract courseFormAbstract;
     private Context context;
     private Courses courses;
 
@@ -51,19 +51,11 @@ public class CourseStep {
     }
 
     /**
-     * Open the course page.
-     */
-    @When("^I go to the Courses page$")
-    public void goToTheCoursesPage() {
-        pageTransporter = PageTransporter.getInstance();
-        coursePage = pageTransporter.navigateToCoursePage();
-    }
-
-    /**
      * Open the course form.
      */
     @When("^I open Course form$")
     public void openCoursesForm() {
+        coursePage = new CoursePage();
         courseForm = coursePage.clickAddCourseForm();
     }
 
@@ -74,12 +66,9 @@ public class CourseStep {
      */
     @When("^I create a new Course with the following information in Course form$")
     public void createANewCourseWithTheFollowingInformationInCourseForm(final Map<String, String> course) {
-        courseForm.setTitle(course.get("Title"));
-        courseForm.setCoordinator(course.get("Coordinator"));
+        courseForm.createCourse(course);
+        courses.processInformation(course);
         courseForm.clickSaveBtn();
-        courses.setTitle(course.get("Title"));
-        courses.setCoordinator(course.get("Coordinator"));
-        courseForm = courseForm.createCourse(courses);
     }
 
     /**
@@ -88,6 +77,40 @@ public class CourseStep {
     @Then("^a message that indicates the Course was created should be displayed$")
     public void displayMessageThatIndicatesTheCourseWasCreatedShouldBeDisplayed() {
         final String message = courseForm.getMessageSave();
-        assertEquals(message, "Successfully Updated");
+        Assert.assertEquals(message, "Successfully Updated");
+    }
+
+    /**
+     * Verifies the title the new course.
+     */
+    @Then("^the Course title should be displayed in the course list in the Course page$")
+    public void verifyTitleTheNewCourseShouldBeDisplayedInTheCourseListInTheCoursePage() {
+        coursePage = new CoursePage();
+        Assert.assertTrue(coursePage.isDisplayedTitleCourse(courses.getTitle()));
+    }
+
+    /**
+     * delete course page.
+     */
+    @When("^I delete all courses in the Course List page$")
+    public void deleteAllCoursesInTheCourseListPage() {
+        coursePage = new CoursePage();
+        coursePage.deleteNewCourseCreated();
+    }
+
+    /**
+     * Verifies the message of delete the new course.
+     */
+    @Then("^I see a message to confirm$")
+    public void verifySeeAMessageToConfirm() {
+        Assert.assertEquals(coursePage.messageBeforeDelete(), "Successfully Deleted");
+    }
+
+    /**
+     * verifies delete courses.
+     */
+    @Then("^the Course title should be removed from Courses List page$")
+    public void verifyCourseTitleShouldBeRemovedFromCoursesListPage() {
+        Assert.assertFalse(coursePage.isDisplayedTitleCourse("Docker2.0"));
     }
 }

@@ -16,6 +16,10 @@ import core.selenium.WebDriverManager;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 
+import cucumber.api.java.Before;
+import orangeHRM.PageTransporter;
+import orangeHRM.ui.Permalink;
+import orangeHRM.ui.pages.CoursePage;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -30,6 +34,8 @@ import org.openqa.selenium.WebDriverException;
 public class Hooks {
 
     private WebDriver webDriver;
+    private PageTransporter pageTransporter;
+    private CoursePage coursePage;
 
     /**
      * Constructor of class.
@@ -55,5 +61,16 @@ public class Hooks {
                 cce.printStackTrace();
             }
         }
+    }
+
+    /**
+     * method for delete course.
+     */
+    @After("@deleteCourse")
+    public void deleteCourse() {
+        pageTransporter = PageTransporter.getInstance();
+        pageTransporter.navigatePage(Permalink.getPermalink("COURSE_PAGE"));
+        coursePage = new CoursePage();
+        coursePage.deleteNewCourseCreated();
     }
 }

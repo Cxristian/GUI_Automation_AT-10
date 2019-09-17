@@ -13,12 +13,12 @@
 package orangeHRM.ui.pages;
 
 import core.utils.DriverMethods;
-import orangeHRM.entities.Courses;
-import orangeHRM.ui.BasePage;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * CourseForm class.
@@ -26,10 +26,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Cristian Lujan
  * @version 0.0.1
  */
-public class CourseForm extends BasePage {
+public class CourseForm extends CourseFormAbstract {
 
     @FindBy(id = "content")
     private WebElement courseDetailForm;
+
+    @FindBy(id = "addCourseTitle")
+    private WebElement titleLabel;
 
     @FindBy(id = "addCourse_title")
     private WebElement titleTxtBox;
@@ -37,17 +40,17 @@ public class CourseForm extends BasePage {
     @FindBy(css = ".ac_input")
     private WebElement coordinatorTxtBox;
 
-    @FindBy(css = "div [data-activates='select-options-dfa8c174-1fda-a6b0-0ddd-234d05fc2c0b']")
-    private WebElement subUnitTxtBox;
+    @FindBy(id = "addCourse_subunit")
+    private WebElement subUnitListBox;
 
-    @FindBy(css = "div [data-activates='select-options-045ad5be-361a-a563-272d-8db641d17d53']")
-    private  WebElement versionTxtBox;
+    @FindBy(id = "addCourse_versionFirst")
+    private  WebElement versionListBox;
 
-    @FindBy(css = "div [data-activates='select-options-864ee902-b7fd-b9d9-0604-06748d972f5c']")
-    private  WebElement subVersionTxtBox;
+    @FindBy(id = "addCourse_versionSecond")
+    private  WebElement subVersionListBox;
 
-    @FindBy(css = "div [data-activates='select-options-8b28ca02-5e14-8cc1-5c49-05a85aaee50b']")
-    private  WebElement currencyTxtBox;
+    @FindBy(id = "addCourse_currency")
+    private  WebElement currencyListBox;
 
     @FindBy(id = "addCourse_cost")
     private WebElement costTxtBox;
@@ -64,9 +67,12 @@ public class CourseForm extends BasePage {
     @FindBy(id = "btnSaveCourse")
     private WebElement saveBtn;
 
-    @FindBy(css = "[class='toast-message']")
+    @FindBy(css = ".toast-message")
     private WebElement confirmationMessage;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(courseDetailForm));
@@ -91,6 +97,86 @@ public class CourseForm extends BasePage {
         coordinatorTxtBox.sendKeys(Keys.ENTER);
     }
 
+    /**
+     * Sets the subunit.
+     *
+     * @param subunit for the contact.
+     */
+    protected void setSubunit(final String subunit) {
+        Select selectElement = new Select(subUnitListBox);
+        selectElement.selectByVisibleText(subunit);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", subUnitListBox);
+    }
+
+    /**
+     * Sets the version.
+     *
+     * @param version for the contact.
+     */
+    protected void setVersion(final String version) {
+        Select selectElement = new Select(versionListBox);
+        selectElement.selectByValue(version);
+    }
+
+    /**
+     * Sets the subVersion.
+     *
+     * @param subVersion for the contact.
+     */
+    protected void setSubVersion(final String subVersion) {
+        Select selectElement = new Select(subVersionListBox);
+        selectElement.selectByValue(subVersion);
+    }
+
+    /**
+     * Sets the currency.
+     *
+     * @param currency for the contact.
+     */
+    protected void setCurrency(final String currency) {
+        Select selectElement = new Select(currencyListBox);
+        selectElement.selectByValue(currency);
+    }
+
+    /**
+     * Sets the cost.
+     *
+     * @param cost of type String
+     */
+    public void setCost(final String cost) {
+        DriverMethods.setTxt(costTxtBox, cost);
+    }
+
+    /**
+     * Sets the company.
+     *
+     * @param company of type String
+     */
+    public void setCompany(final String company) {
+        DriverMethods.setTxt(companyTxtBox, company);
+    }
+
+    /**
+     * Sets the duration.
+     *
+     * @param duration of type String
+     */
+    public void setDuration(final String duration) {
+        DriverMethods.setTxt(durationTxtBox, duration);
+    }
+
+    /**
+     * Sets the description.
+     *
+     * @param description of type String
+     */
+    public void setDescription(final String description) {
+        DriverMethods.setTxt(descriptionTxtBox, description);
+    }
+
+    /**
+     * Clicks on save button.
+     */
     public void clickSaveBtn() {
         saveBtn.click();
     }
@@ -104,10 +190,12 @@ public class CourseForm extends BasePage {
         return confirmationMessage.getText();
     }
 
-    public CourseForm createCourse(final Courses course) {
-        setTitle(course.getTitle());
-        setCoordinator(course.getCoordinator());
-        clickSaveBtn();
-        return new CourseForm();
+    /**
+     * Gets title before of saved.
+     *
+     * @return text of title.
+     */
+    public String getTitleCourseDetails() {
+        return titleLabel.getText();
     }
 }
