@@ -50,6 +50,7 @@ public class CoursePage extends BasePage {
     @FindBy(css = "[class='toast-message']")
     private WebElement messageBeforeDelete;
 
+    private final String parent = driver.getWindowHandle();
     private final String TITLE_LIST = "//td[@class=' '][@style='width: 25%'] //a[contains(text(),'titleOfList')]";
     private final String COORDINATOR_LIST =
             "//td[@class=' '][@style='width: 20%'][contains(text(),'coordinatorOfList')]";
@@ -82,12 +83,6 @@ public class CoursePage extends BasePage {
         return new CourseForm();
     }
 
-    /**
-     * Constructor of page.
-     */
-    public CoursePage() {
-        driver.switchTo().frame(0);
-    }
 
     /**
      * Checks title in Course List.

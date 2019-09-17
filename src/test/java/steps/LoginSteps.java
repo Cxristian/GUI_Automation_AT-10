@@ -39,6 +39,7 @@ public class LoginSteps {
         pageTransporter = PageTransporter.getInstance();
         pageTransporter.navigatePage(Permalink.getPermalink(permalink));
     }
+
     /**
      * Sign in step.
      * @param userName of type String

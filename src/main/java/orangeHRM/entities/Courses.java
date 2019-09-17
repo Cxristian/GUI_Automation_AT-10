@@ -73,13 +73,13 @@ public class Courses {
         strategyMap.put(TITLE, () -> setTitle(newCourse.get(TITLE)));
         strategyMap.put(COORDINATOR, () -> setCoordinator(newCourse.get(COORDINATOR)));
         strategyMap.put(SUBUNIT, () -> setSubunit(newCourse.get(SUBUNIT)));
-        strategyMap.put(VERSION, () -> setSubunit(newCourse.get(VERSION)));
-        strategyMap.put(SUB_VERSION, () -> setSubunit(newCourse.get(SUB_VERSION)));
-        strategyMap.put(CURRENCY, () -> setSubunit(newCourse.get(CURRENCY)));
-        strategyMap.put(COST, () -> setSubunit(newCourse.get(COST)));
-        strategyMap.put(COMPANY, () -> setSubunit(newCourse.get(COMPANY)));
-        strategyMap.put(DURATION, () -> setSubunit(newCourse.get(DURATION)));
-        strategyMap.put(DESCRIPTION, () -> setSubunit(newCourse.get(DESCRIPTION)));
+        strategyMap.put(VERSION, () -> setVersion(newCourse.get(VERSION)));
+        strategyMap.put(SUB_VERSION, () -> setSubVersion(newCourse.get(SUB_VERSION)));
+        strategyMap.put(CURRENCY, () -> setCurrency(newCourse.get(CURRENCY)));
+        strategyMap.put(COST, () -> setCost(newCourse.get(COST)));
+        strategyMap.put(COMPANY, () -> setCompany(newCourse.get(COMPANY)));
+        strategyMap.put(DURATION, () -> setDuration(newCourse.get(DURATION)));
+        strategyMap.put(DESCRIPTION, () -> setDescription(newCourse.get(DESCRIPTION)));
         return strategyMap;
     }
 

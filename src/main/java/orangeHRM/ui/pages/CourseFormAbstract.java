@@ -60,13 +60,13 @@ public abstract class CourseFormAbstract extends BasePage {
         strategyMap.put(TITLE, () -> setTitle(newCourse.get(TITLE)));
         strategyMap.put(COORDINATOR, () -> setCoordinator(newCourse.get(COORDINATOR)));
         strategyMap.put(SUBUNIT, () -> setSubunit(newCourse.get(SUBUNIT)));
-        strategyMap.put(VERSION, () -> setSubunit(newCourse.get(VERSION)));
-        strategyMap.put(SUB_VERSION, () -> setSubunit(newCourse.get(SUB_VERSION)));
-        strategyMap.put(CURRENCY, () -> setSubunit(newCourse.get(CURRENCY)));
-        strategyMap.put(COST, () -> setSubunit(newCourse.get(COST)));
-        strategyMap.put(COMPANY, () -> setSubunit(newCourse.get(COMPANY)));
-        strategyMap.put(DURATION, () -> setSubunit(newCourse.get(DURATION)));
-        strategyMap.put(DESCRIPTION, () -> setSubunit(newCourse.get(DESCRIPTION)));
+        strategyMap.put(VERSION, () -> setVersion(newCourse.get(VERSION)));
+        strategyMap.put(SUB_VERSION, () -> setSubVersion(newCourse.get(SUB_VERSION)));
+        strategyMap.put(CURRENCY, () -> setCurrency(newCourse.get(CURRENCY)));
+        strategyMap.put(COST, () -> setCost(newCourse.get(COST)));
+        strategyMap.put(COMPANY, () -> setCompany(newCourse.get(COMPANY)));
+        strategyMap.put(DURATION, () -> setDuration(newCourse.get(DURATION)));
+        strategyMap.put(DESCRIPTION, () -> setDescription(newCourse.get(DESCRIPTION)));
         return strategyMap;
     }
 
@@ -91,4 +91,52 @@ public abstract class CourseFormAbstract extends BasePage {
      */
     protected abstract void setSubunit(String subunit);
 
+    /**
+     * Sets the version sending a string.
+     *
+     * @param version for the contact.
+     */
+    protected abstract void setVersion(String version);
+
+    /**
+     * Sets the subVersion sending a string.
+     *
+     * @param subVersion for the contact.
+     */
+    protected abstract void setSubVersion(String subVersion);
+
+    /**
+     * Sets the currency sending a string.
+     *
+     * @param currency for the contact.
+     */
+    protected abstract void setCurrency(String currency);
+
+    /**
+     * Sets the cost sending a string.
+     *
+     * @param cost for the contact.
+     */
+    protected abstract void setCost(String cost);
+
+    /**
+     * Sets the company sending a string.
+     *
+     * @param company for the contact.
+     */
+    protected abstract void setCompany(String company);
+
+    /**
+     * Sets the duration sending a string.
+     *
+     * @param duration for the contact.
+     */
+    protected abstract void setDuration(String duration);
+
+    /**
+     * Sets the description sending a string.
+     *
+     * @param description for the contact.
+     */
+    protected abstract void setDescription(String description);
 }

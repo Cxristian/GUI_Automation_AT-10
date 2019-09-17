@@ -20,10 +20,9 @@ import orangeHRM.entities.Courses;
 import orangeHRM.ui.pages.CourseForm;
 import orangeHRM.ui.pages.CourseFormAbstract;
 import orangeHRM.ui.pages.CoursePage;
+import org.junit.Assert;
 
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 /**
  * steps.CourseStep class.
@@ -78,7 +77,7 @@ public class CourseStep {
     @Then("^a message that indicates the Course was created should be displayed$")
     public void displayMessageThatIndicatesTheCourseWasCreatedShouldBeDisplayed() {
         final String message = courseForm.getMessageSave();
-        assertEquals(message, "Successfully Updated");
+        Assert.assertEquals(message, "Successfully Updated");
     }
 
     /**
@@ -87,7 +86,7 @@ public class CourseStep {
     @Then("^the Course title should be displayed in the course list in the Course page$")
     public void verifyTitleTheNewCourseShouldBeDisplayedInTheCourseListInTheCoursePage() {
         coursePage = new CoursePage();
-        assertTrue(coursePage.isDisplayedTitleCourse("Docker2.0"));
+        Assert.assertTrue(coursePage.isDisplayedTitleCourse(courses.getTitle()));
     }
 
     /**
@@ -104,7 +103,7 @@ public class CourseStep {
      */
     @Then("^I see a message to confirm$")
     public void verifySeeAMessageToConfirm() {
-        assertEquals(coursePage.messageBeforeDelete(), "Successfully Deleted");
+        Assert.assertEquals(coursePage.messageBeforeDelete(), "Successfully Deleted");
     }
 
     /**
@@ -112,6 +111,6 @@ public class CourseStep {
      */
     @Then("^the Course title should be removed from Courses List page$")
     public void verifyCourseTitleShouldBeRemovedFromCoursesListPage() {
-        assertFalse(coursePage.isDisplayedTitleCourse("Docker2.0"));
+        Assert.assertFalse(coursePage.isDisplayedTitleCourse("Docker2.0"));
     }
 }

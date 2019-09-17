@@ -25,7 +25,7 @@ public final class Permalink {
 
     public static final String LOGIN_PAGE = "auth/login";
     public static final String DASHBOARD_PAGE = "client/#/dashboard";
-    public static final String COURSE_PAGE = "client/#/noncore/training/viewCourseList";
+    public static final String COURSE_PAGE = "training/viewCourseList";
     private static Map<String, String> course = new HashMap<>();
     static {
         course.put("LOGIN_PAGE", LOGIN_PAGE);
@@ -47,5 +47,4 @@ public final class Permalink {
      * Constructor private.
      */
     private Permalink() { }
-
 }
